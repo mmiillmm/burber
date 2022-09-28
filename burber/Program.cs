@@ -17,78 +17,77 @@ namespace hambi
             int sultkrumpliszam = 0;
             int menuszam = 0;
             int vegosszeg = (hambiszam * hambiar) + (sultkrumpliszam * sultkrumpar) + (menuszam * menuar);
+            bool ujTerm = false;
 
-        eleje:
-            Console.Write("Kérem adja meg hogy mit kér, hamburger(t), sültkrumpli(t) vagy menü(t): ");
+            while (!ujTerm)
+                {
+                    Console.Write("Kérem adja meg hogy mit kér, hamburger(t), sültkrumpli(t) vagy menü(t): ");
 
-            string valaszt = Console.ReadLine();
+                    string valaszt = Console.ReadLine();
 
-            if (valaszt == "sültkrumpli")
-                sultkrumpliszam++;
+                    if (valaszt == "sültkrumpli")
+                        sultkrumpliszam++;
 
-            else if (valaszt == "hamburger")
-                hambiszam++;
+                    else if (valaszt == "hamburger")
+                        hambiszam++;
 
-            else if (valaszt == "menü")
-                menuszam++;
+                    else if (valaszt == "menü")
+                        menuszam++;
 
-            if (valaszt != "sültkrumpli" && valaszt != "hamburger" && valaszt != "menü")
-                Console.WriteLine("A megadott termék nem létezik!");
+                    if (valaszt != "sültkrumpli" && valaszt != "hamburger" && valaszt != "menü")
+                        Console.WriteLine("A megadott termék nem létezik!");
 
-            Console.WriteLine();
+                    Console.WriteLine();
 
-            Console.WriteLine($"Jelenlegi rendelése: {hambiszam} hamburger, {sultkrumpliszam} sültkrumpli és {menuszam} menü.");
+                    Console.WriteLine($"Jelenlegi rendelése: {hambiszam} hamburger, {sultkrumpliszam} sültkrumpli és {menuszam} menü.");
 
-            Console.WriteLine();
+                    Console.WriteLine();
 
-            Console.Write("Szeretne bármi mást hozzáadni a rendeléshez? (Igen/Nem) ");
+                    Console.Write("Szeretne bármi mást hozzáadni a rendeléshez? (Igen/Nem) ");
+                
+                    if (Console.ReadLine() == "Igen")
+                    {
+                        ujTerm = true;
+                    }
 
-            string ujterm = Console.ReadLine();
+                    else if (Console.ReadLine() == "Nem")
+                    {
+                        ujTerm = false;
+                    }
+                    Console.WriteLine(ujTerm);
+                }   
 
-            if (ujterm == "igen")
-                goto eleje;
+                Console.WriteLine("Szeretné 100 Ft-al támogatni a cégünket? (Igen/Nem)");
 
-            else if (ujterm == "nem")
-                goto donation;
+                string dono = Console.ReadLine();
 
-            donation:
+                if (dono == "Igen")
+                    vegosszeg += 100;
 
-            Console.WriteLine("Szeretné 100 Ft-al támogatni a cégünket? (Igen/Nem)");
+                Console.Beep(500, 250);
+                Console.Beep(500, 250);
+                Console.Beep(300, 250);
+                Console.Beep(700, 250);
+                Console.Beep(900, 250);
+                Console.WriteLine("Köszönjük! A rendelése: ");
+                Console.WriteLine();
+                Console.WriteLine("|-----Hambi Place-----|");
 
-            string dono = Console.ReadLine();
+                if (hambiszam > 0)
+                    Console.WriteLine($"|-----{hambiszam} hamburger-----|");
 
-            if (dono == "Igen")
-                vegosszeg = vegosszeg + 100;
+                if (sultkrumpliszam > 0)
+                    Console.WriteLine($"|----{sultkrumpliszam} sültkrumpli----|");
 
-            else if (dono == "Nem")
-                goto folyt;
+                if (menuszam > 0)
+                    Console.WriteLine($"|--------{menuszam} menü-------|");
 
-            folyt:
+                Console.WriteLine();
 
-            Console.Beep(500, 250);
-            Console.Beep(500, 250);
-            Console.Beep(300, 250);
-            Console.Beep(700, 250);
-            Console.Beep(900, 250);
-            Console.WriteLine("Köszönjük! A rendelése: ");
-            Console.WriteLine();
-            Console.WriteLine("|-----Hambi Place-----|");
-
-            if (hambiszam > 0)
-                Console.WriteLine($"|-----{hambiszam} hamburger-----|");
-
-            if (sultkrumpliszam > 0)
-                Console.WriteLine($"|----{sultkrumpliszam} sültkrumpli----|");
-
-            if (menuszam > 0)
-                Console.WriteLine($"|--------{menuszam} menü-------|");
-
-            Console.WriteLine();
-
-            Console.WriteLine($"|---{vegosszeg} Ft a fizetendő végösszeg---|");
-            Console.WriteLine();
-            Console.WriteLine("Köszönjük hogy nálunk vásárolt! C:");
-            Console.ReadLine();
+                Console.WriteLine($"|---{vegosszeg} Ft a fizetendő végösszeg---|");
+                Console.WriteLine();
+                Console.WriteLine("Köszönjük hogy nálunk vásárolt! C:");
+                Console.ReadLine();
 
         }
     }
