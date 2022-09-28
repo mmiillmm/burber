@@ -16,7 +16,6 @@ namespace hambi
             int hambiszam = 0;
             int sultkrumpliszam = 0;
             int menuszam = 0;
-            int vegosszeg = (hambiszam * hambiar) + (sultkrumpliszam * sultkrumpar) + (menuszam * menuar);
             bool ujTerm = false;
 
             while (!ujTerm)
@@ -44,20 +43,19 @@ namespace hambi
                     Console.WriteLine();
 
                     Console.Write("Szeretne bármi mást hozzáadni a rendeléshez? (Igen/Nem) ");
-                
-                    if (Console.ReadLine() == "Igen")
-                    {
-                        ujTerm = true;
-                    }
 
-                    else if (Console.ReadLine() == "Nem")
-                    {
-                        ujTerm = false;
-                    }
-                    Console.WriteLine(ujTerm);
-                }   
+                string valtos = Console.ReadLine();
+
+                if (valtos == "Nem")
+                {
+                    ujTerm = true;
+                }
+
+                } 
 
                 Console.WriteLine("Szeretné 100 Ft-al támogatni a cégünket? (Igen/Nem)");
+
+                int vegosszeg = (hambiszam * hambiar) + (sultkrumpliszam * sultkrumpar) + (menuszam * menuar);
 
                 string dono = Console.ReadLine();
 
